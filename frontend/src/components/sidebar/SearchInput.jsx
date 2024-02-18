@@ -3,11 +3,12 @@ import { IoSearchSharp } from "react-icons/io5";
 import useConversation from "../../zustand/useConversation";
 import useSearchUser from "../../hooks/useSearchUser";
 import { capitalizeName } from "../../utils/capitalizeName";
+import useGetConversation from "../../hooks/useGetConversation";
 
 const SearchInput = () => {
   const [search, setSearch] = useState("");
   const { loading, searchUserByName } = useSearchUser();
-  const { selectedConversation, setSelectedConversation } = useConversation();
+  const { setSelectedConversation } = useConversation();
   const name = capitalizeName(search);
   const searchUser = async (e) => {
     e.preventDefault();

@@ -4,10 +4,9 @@ import useGetConversation from "../../hooks/useGetConversation";
 import { getRandomEmoji } from "../../utils/emojis";
 import useConversation from "../../zustand/useConversation";
 
-const Conversations = () => {
+const Conversations = ({ toggleDrawer }) => {
   const { loading, conversations } = useGetConversation();
   const { setConversation } = useConversation();
-
   useEffect(() => {
     return () => setConversation([]);
   }, [setConversation]);
@@ -18,6 +17,7 @@ const Conversations = () => {
         conversations.map((conversation, index) => (
           <Conversation
             key={conversation._id}
+            toggleDrawer={toggleDrawer}
             conversation={conversation}
             emoji={getRandomEmoji()}
             lastIndex={index === conversation.length - 1}

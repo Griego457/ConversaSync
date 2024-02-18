@@ -4,7 +4,7 @@ import MessageInput from "./MessageInput";
 import useConversation from "../../zustand/useConversation";
 import { useAuthContext } from "../../context/AuthContext";
 
-const MessageContainer = () => {
+const MessageContainerMobile = () => {
   const { selectedConversation, setSelectedConversation } = useConversation();
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const MessageContainer = () => {
   }, [setSelectedConversation]);
 
   return (
-    <div className="md:min-w-[450px] flex flex-col">
+    <div className={`flex flex-col h-svh overflow-hidden w-svw p-2`}>
       {!selectedConversation ? (
         <NoChatSelected />
       ) : (
@@ -31,7 +31,7 @@ const MessageContainer = () => {
   );
 };
 
-export default MessageContainer;
+export default MessageContainerMobile;
 
 const NoChatSelected = () => {
   const { authUser } = useAuthContext();
